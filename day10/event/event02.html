@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>클릭 이벤트2</title>
+</head>
+<body>
+  <form action="">
+    <label><input type="text" name ="id" placeholder="아이디를 입력하세요"></label>
+    <p id=" id-result"></p>
+    <label><input type="password" name ="password" placeholder="비밀번호를 입력하세요"></label>
+    <p id="password-result"></p>
+    <button type="button">완료</button>
+  </form>
+</body>
+<script>
+  const id = document.querySelector("input[name=id]")
+  const password = document.querySelector("input[name=password]")
+  const p1 = document.querySelector("#id-result")
+  const p2 = document.querySelector("#password-result")
+  const button = document.querySelector("button")
+  //아이디와 비밀번호 유효성 검사
+
+  button.addEventListener("click",()=>{ // 버튼을 누르면 이벤트가 발생하고, 유효성을 검사한다
+    if(!id.value){// id랑 비밀번호가 값이 있는지 없는지를 검사해야한다
+      p1.innerText="아이디를 입력하세요"
+      p1.style.backgroundColor="red"
+      return;
+    }
+    p1.innerText="멋진 아이디"
+    p1.style.backgroundColor="blue"
+
+
+    if(!password.value){// id랑 비밀번호가 값이 있는지 없는지를 검사해야한다
+      p2.innerText="비밀번호를 입력하세요"
+      p2.style.backgroundColor="red"
+      return;
+    }
+    p1.innerText="멋진 비밀번호"
+    p1.style.backgroundColor="blue"
+  })
+
+</script>
+</html>

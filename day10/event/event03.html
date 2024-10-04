@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>클릭 이벤트2</title>
+  <style>
+    input {
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <form action="">
+    <label><input type="text" name ="id" placeholder="아이디를 입력하세요"></label>
+    <p id="id-result"></p>
+    <label><input type="password" name ="password" placeholder="비밀번호를 입력하세요"></label>
+    <p id="password-result"></p>
+    <button type="button">완료</button>
+  </form>
+</body>
+<script>
+  const form = document.querySelector("form")
+  const id = document.querySelector("input[name='id']")
+  const password = document.querySelector("input[name='password']")
+  const p1 = document.querySelector("#id-result")
+  const p2 = document.querySelector("#password-result")
+  const button = document.querySelector("button")
+  //아이디와 비밀번호 유효성 검사
+  globalThis.flag = new Array(false,false);
+  
+  
+  id.addEventListener("focus",()=>{
+    id.style.border="solid 1px orange";
+  })
+  id.addEventListener("blur",(e)=>{
+    id.style.border="";
+   const target=e.target;
+   if(!target.value){
+    p1.innerText="아이디를 입력하세요"
+    p1.style.color="red"
+    return;
+   }
+   p1.innerText="멋진 아이디네요"
+   p1.style.color="blue"
+   globalThis.flag[0]=true;
+  })
+
+
+  password.addEventListener("focus",()=>{
+    password.style.border="solid 1px orange";
+  })
+  password.addEventListener("blur",(e)=>{
+    password.style.border="";
+   const target=e.target;
+   if(!target.value){
+    p2.innerText="비밀번호를 입력하세요"
+    p2.style.color="red"
+    return;
+   }
+   p2.innerText="멋진 비밀번호네요"
+   p2.style.color="blue"
+   globalThis.flag[1]=true;
+  })
+
+  button.addEventListener("click",()=>{
+    if(globalThis.flag.filter(check => check).length !=2){
+      alert("정보를 입력하세여")
+      return;
+    }
+    form.submit();
+  })
+
+</script>
+</html>
